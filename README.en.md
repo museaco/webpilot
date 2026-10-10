@@ -1,6 +1,10 @@
-# WebPilot
+Simplified Chinese version: [README.md](./README.md)
 
-简体中文版本：[README.md](./README.md)
+<p align="center">
+  <img src="./assets/icon.png" alt="WebPilot" width="300">
+</p>
+
+<h1 style="color: #009B72">WebPilot</h1>
 
 ## Introduction
 
@@ -29,7 +33,7 @@ WebPilot is a Chrome extension built with Manifest V3. It connects to an OpenCod
 - **Webpage context**: When you explicitly enable this feature, WebPilot reads the current page's title, URL, and main content when you send a message, then includes the cleaned content with that prompt. Page content is not collected or sent automatically, and is not automatically attached to later messages.
 - **Connection settings**: Configure the OpenCode server address, port, and optional password, and check the connection status. The default server address is `http://127.0.0.1:4096`.
 - **Personalization**: Choose light, dark, or system theme. The interface is available in English, Simplified Chinese, Traditional Chinese, Japanese, Korean, French, and Spanish.
-- **Skills support**: Use skills configured in your OpenCode environment during conversations.
+- **Skills support**: Use any skills configured in your OpenCode environment during conversations.
 
 ### Privacy and Data
 
