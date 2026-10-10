@@ -9,6 +9,7 @@ import {
   getOpenCodeSessionModel,
   getOpenCodeSessionMessages,
   isGenericOpenCodeSessionTitle,
+  isSelectableOpenCodeModel,
   listOpenCodeSkills,
   listOpenCodeSessionForms,
   summarizeOpenCodeUsage,
@@ -572,7 +573,7 @@ function ReadyAssistantChat({
 
         if (!hasResolvedInitialModel.current) {
           const availableModels = catalog.models.filter(
-            (model) => model.enabled && model.status !== "deprecated",
+            isSelectableOpenCodeModel,
           );
           const preferredModel =
             availableModels.find(
@@ -580,8 +581,8 @@ function ReadyAssistantChat({
                 model.id === DEFAULT_OPENCODE_MODEL.id &&
                 model.providerID === DEFAULT_OPENCODE_MODEL.providerID,
             ) ??
-            (catalog.defaultModel?.enabled &&
-            catalog.defaultModel.status !== "deprecated"
+            (catalog.defaultModel &&
+            isSelectableOpenCodeModel(catalog.defaultModel)
               ? catalog.defaultModel
               : undefined) ??
             availableModels[0];

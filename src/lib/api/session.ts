@@ -14,6 +14,10 @@ export type OpenCodeModel = Awaited<
   ReturnType<typeof client.model.list>
 >["data"][number];
 
+export function isSelectableOpenCodeModel(model: OpenCodeModel) {
+  return model.enabled && model.status === "active";
+}
+
 export type OpenCodeProvider = Awaited<
   ReturnType<typeof client.provider.list>
 >["data"][number];

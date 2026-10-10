@@ -10,9 +10,11 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import type {
-  OpenCodeModelCatalog,
-  OpenCodeModelSelection,
+import {
+  isSelectableOpenCodeModel,
+  type OpenCodeModel,
+  type OpenCodeModelCatalog,
+  type OpenCodeModelSelection,
 } from "@/lib/api/session";
 import { TooltipHint } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -22,6 +24,7 @@ import {
   PlusIcon,
   SparklesIcon,
 } from "lucide-react";
+import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 
 type ModelPickerProps = {
@@ -45,6 +48,96 @@ function formatVariant(
 ) {
   if (!variant) return defaultLabel;
   return labels[variant.toLowerCase()] ?? variant.charAt(0).toUpperCase() + variant.slice(1);
+}
+
+function formatModelPrice(price: number, locale: string) {
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: "USD",
+    maximumSignificantDigits: 4,
+  }).format(price);
+}
+
+function ModelPriceTooltip({
+  model,
+  providerName,
+  children,
+}: {
+  model: OpenCodeModel;
+  providerName: string;
+  children: ReactNode;
+}) {
+  const { t, i18n } = useTranslation();
+  const locale = i18n.resolvedLanguage ?? i18n.language;
+
+  return (
+    <TooltipHint
+      side="right"
+      className="w-full"
+      contentClassName="!px-4 !py-3"
+      content={
+        <div className="flex w-full flex-col gap-3 text-sm">
+          <div className="truncate font-semibold">
+            {/*{providerName} · */}
+            {model.name}
+          </div>
+          <div className="text-popover-foreground/70">
+            {t("model.pricePerMillion")}
+          </div>
+          {model.cost.length > 0 ? (
+            model.cost.map((price, index) => (
+              <div
+                key={`${price.tier?.size ?? "default"}-${index}`}
+                className="flex flex-col gap-2 border-t border-border pt-2.5"
+              >
+                {price.tier && (
+                  <div className="text-popover-foreground/70">
+                    {t("model.contextTier", {
+                      size: new Intl.NumberFormat(locale).format(
+                        price.tier.size,
+                      ),
+                    })}
+                  </div>
+                )}
+                <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1.5">
+                  <span className="text-popover-foreground/70">
+                    {t("usage.input")}
+                  </span>
+                  <span className="text-right font-medium">
+                    {formatModelPrice(price.input, locale)}
+                  </span>
+                  <span className="text-popover-foreground/70">
+                    {t("usage.output")}
+                  </span>
+                  <span className="text-right font-medium">
+                    {formatModelPrice(price.output, locale)}
+                  </span>
+                  <span className="text-popover-foreground/70">
+                    {t("model.cacheRead")}
+                  </span>
+                  <span className="text-right font-medium">
+                    {formatModelPrice(price.cache.read, locale)}
+                  </span>
+                  <span className="text-popover-foreground/70">
+                    {t("model.cacheWrite")}
+                  </span>
+                  <span className="text-right font-medium">
+                    {formatModelPrice(price.cache.write, locale)}
+                  </span>
+                </div>
+              </div>
+            ))
+          ) : (
+            <span className="text-popover-foreground/70">
+              {t("model.pricingUnavailable")}
+            </span>
+          )}
+        </div>
+      }
+    >
+      {children}
+    </TooltipHint>
+  );
 }
 
 export function ModelPicker({
@@ -74,7 +167,7 @@ export function ModelPicker({
   >();
 
   for (const model of catalog.models) {
-    if (!model.enabled || model.status === "deprecated") continue;
+    if (!isSelectableOpenCodeModel(model)) continue;
 
     const group = modelGroups.get(model.providerID) ?? {
       providerID: model.providerID,
@@ -157,20 +250,42 @@ export function ModelPicker({
           side="top"
           style={{ width: "min(18rem, calc(100vw - 1.5rem))" }}
         >
-          <DropdownMenuItem
-            className="min-h-14 items-start py-2"
-            onClick={() => onModelChange(selection)}
-          >
-            <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-              <span className="truncate font-medium text-foreground">
-                {modelName}
+          {selectedModel ? (
+            <ModelPriceTooltip
+              model={selectedModel}
+              providerName={providerName}
+            >
+              <DropdownMenuItem
+                className="w-full min-h-14 items-start py-2"
+                onClick={() => onModelChange(selection)}
+              >
+                <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+                  <span className="truncate font-medium text-foreground">
+                    {modelName}
+                  </span>
+                  <span className="truncate text-xs text-muted-foreground">
+                    {providerName} · {selectedModel.modelID}
+                  </span>
+                </span>
+                <CheckIcon className="mt-1 size-4 shrink-0 text-primary" />
+              </DropdownMenuItem>
+            </ModelPriceTooltip>
+          ) : (
+            <DropdownMenuItem
+              className="w-full min-h-14 items-start py-2"
+              onClick={() => onModelChange(selection)}
+            >
+              <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+                <span className="truncate font-medium text-foreground">
+                  {modelName}
+                </span>
+                <span className="truncate text-xs text-muted-foreground">
+                  {providerName} · {selection.id}
+                </span>
               </span>
-              <span className="truncate text-xs text-muted-foreground">
-                {providerName} · {selectedModel?.modelID ?? selection.id}
-              </span>
-            </span>
-            <CheckIcon className="mt-1 size-4 shrink-0 text-primary" />
-          </DropdownMenuItem>
+              <CheckIcon className="mt-1 size-4 shrink-0 text-primary" />
+            </DropdownMenuItem>
+          )}
 
           <DropdownMenuSeparator />
 
@@ -260,22 +375,28 @@ export function ModelPicker({
                         model.providerID === selection.providerID;
 
                       return (
-                        <DropdownMenuItem
+                        <ModelPriceTooltip
                           key={`${model.providerID}/${model.id}`}
-                          onClick={() =>
-                            onModelChange({
-                              id: model.id,
-                              providerID: model.providerID,
-                            })
-                          }
+                          model={model}
+                          providerName={group.name}
                         >
-                          <span className="min-w-0 flex-1 truncate">
-                            {model.name}
-                          </span>
-                          {isSelected && (
-                            <CheckIcon className="size-4 shrink-0 text-primary" />
-                          )}
-                        </DropdownMenuItem>
+                          <DropdownMenuItem
+                            className="w-full"
+                            onClick={() =>
+                              onModelChange({
+                                id: model.id,
+                                providerID: model.providerID,
+                              })
+                            }
+                          >
+                            <span className="min-w-0 flex-1 truncate">
+                              {model.name}
+                            </span>
+                            {isSelected && (
+                              <CheckIcon className="size-4 shrink-0 text-primary" />
+                            )}
+                          </DropdownMenuItem>
+                        </ModelPriceTooltip>
                       );
                     })}
                   </DropdownMenuGroup>
