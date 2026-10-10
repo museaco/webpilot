@@ -35,7 +35,7 @@ function isTheme(value: string | null): value is Theme {
 export function ThemeProvider({
   children,
   defaultTheme = "system",
-  storageKey = "webpilot.theme",
+  storageKey = "Webpilot.theme",
   rootElement,
 }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(defaultTheme);

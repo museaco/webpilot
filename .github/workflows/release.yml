@@ -1,4 +1,4 @@
-name: "WebPilot Build & Release"
+name: "Webpilot Build & Release"
 
 on:
   push:
@@ -52,7 +52,7 @@ jobs:
           ASSET="webpilot-chrome-${TAG}.zip"
 
           cp build/chrome-mv3-prod.zip "$ASSET"
-          # Stable file name for the latest WebPilot Chrome extension release.
+          # Stable file name for the latest webpilot Chrome extension release.
           cp build/chrome-mv3-prod.zip webpilot-chrome.zip
 
           PREV_TAG=$(git tag --list 'v*-build.*' --sort=-creatordate | head -n 1)
@@ -87,7 +87,7 @@ jobs:
         with:
           tag_name: ${{ steps.meta.outputs.tag }}
           target_commitish: ${{ github.sha }}
-          name: WebPilot ${{ steps.meta.outputs.version }} (build ${{ github.run_number }})
+          name: webpilot ${{ steps.meta.outputs.version }}
           body_path: RELEASE_NOTES.md
           make_latest: true
           files: |

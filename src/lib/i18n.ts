@@ -17,7 +17,7 @@ const LANGUAGE_STORAGE_KEY = "opencode.language";
 
 const en = {
   app: {
-    title: "WebPilot",
+    title: "Webpilot",
     themeLabel: "Appearance",
     themeLight: "Light",
     themeDark: "Dark",
@@ -80,7 +80,7 @@ const en = {
     verifying: "Verifying…",
     invalid: "Incorrect password. Please try again.",
     unavailable: "Unable to verify the password. Check that the OpenCode server is running.",
-    permissionDenied: "Allow WebPilot to access this server address, then try again.",
+    permissionDenied: "Allow Webpilot to access this server address, then try again.",
   },
   settings: {
     title: "Settings",
@@ -89,7 +89,7 @@ const en = {
     saving: "Checking connection…",
     saved: "Server settings saved.",
     invalidEndpoint: "Enter a valid HTTP or HTTPS address and port.",
-    permissionDenied: "Allow WebPilot to access this server address.",
+    permissionDenied: "Allow Webpilot to access this server address.",
     connectionFailed: "Unable to connect to this server. Check the address and try again.",
   },
   form: {
@@ -179,7 +179,7 @@ const en = {
     copy: "Copy",
     scrollToBottom: "Scroll to bottom",
     welcomeMessage: "How can I help you today?",
-    composerPlaceholder: "Ask WebPilot",
+    composerPlaceholder: "Ask Webpilot",
     composerAria: "Message input",
     skillsLabel: "Skills",
     skillsLoading: "Loading skills…",
@@ -263,7 +263,7 @@ type TranslationShape<T> = {
 
 const zhCN: TranslationShape<typeof en> = {
   app: {
-    title: "WebPilot",
+    title: "Webpilot",
     themeLabel: "外观",
     themeLight: "浅色",
     themeDark: "深色",
@@ -321,7 +321,7 @@ const zhCN: TranslationShape<typeof en> = {
     verifying: "正在验证…",
     invalid: "密码错误，请重试。",
     unavailable: "无法验证密码，请检查 OpenCode 服务是否正在运行。",
-    permissionDenied: "请允许 WebPilot 访问此服务地址，然后重试。",
+    permissionDenied: "请允许 Webpilot 访问此服务地址，然后重试。",
   },
   settings: {
     title: "设置",
@@ -330,7 +330,7 @@ const zhCN: TranslationShape<typeof en> = {
     saving: "正在检查连接…",
     saved: "服务设置已保存。",
     invalidEndpoint: "请输入有效的 HTTP 或 HTTPS 地址和端口。",
-    permissionDenied: "请允许 WebPilot 访问此服务地址。",
+    permissionDenied: "请允许 Webpilot 访问此服务地址。",
     connectionFailed: "无法连接此服务，请检查地址后重试。",
   },
   form: {
@@ -416,7 +416,7 @@ const zhCN: TranslationShape<typeof en> = {
     copy: "复制",
     scrollToBottom: "滚动到底部",
     welcomeMessage: "今天我能为你做些什么？",
-    composerPlaceholder: "询问 WebPilot",
+    composerPlaceholder: "询问 Webpilot",
     composerAria: "消息输入框",
     skillsLabel: "技能",
     skillsLoading: "正在加载技能…",
@@ -492,7 +492,7 @@ const zhCN: TranslationShape<typeof en> = {
 
 const zhTW: TranslationShape<typeof en> = {
   app: {
-    title: "WebPilot",
+    title: "Webpilot",
     themeLabel: "外觀",
     themeLight: "淺色",
     themeDark: "深色",
@@ -550,7 +550,7 @@ const zhTW: TranslationShape<typeof en> = {
     verifying: "正在驗證…",
     invalid: "密碼錯誤，請再試一次。",
     unavailable: "無法驗證密碼，請確認 OpenCode 服務正在執行。",
-    permissionDenied: "請允許 WebPilot 存取此服務位址，然後再試一次。",
+    permissionDenied: "請允許 Webpilot 存取此服務位址，然後再試一次。",
   },
   settings: {
     title: "設定",
@@ -559,7 +559,7 @@ const zhTW: TranslationShape<typeof en> = {
     saving: "正在檢查連線…",
     saved: "服務設定已儲存。",
     invalidEndpoint: "請輸入有效的 HTTP 或 HTTPS 位址與連接埠。",
-    permissionDenied: "請允許 WebPilot 存取此服務位址。",
+    permissionDenied: "請允許 Webpilot 存取此服務位址。",
     connectionFailed: "無法連線至此服務，請檢查位址後再試一次。",
   },
   form: {
@@ -645,7 +645,7 @@ const zhTW: TranslationShape<typeof en> = {
     copy: "複製",
     scrollToBottom: "捲動至底部",
     welcomeMessage: "今天我能為你做些什麼？",
-    composerPlaceholder: "詢問 WebPilot",
+    composerPlaceholder: "詢問 Webpilot",
     composerAria: "訊息輸入框",
     skillsLabel: "技能",
     skillsLoading: "正在載入技能…",
@@ -721,7 +721,7 @@ const zhTW: TranslationShape<typeof en> = {
 
 const ja: TranslationShape<typeof en> = {
   app: {
-    title: "WebPilot",
+    title: "Webpilot",
     themeLabel: "外観",
     themeLight: "ライト",
     themeDark: "ダーク",
@@ -779,7 +779,7 @@ const ja: TranslationShape<typeof en> = {
     verifying: "確認中…",
     invalid: "パスワードが正しくありません。もう一度お試しください。",
     unavailable: "パスワードを確認できません。OpenCode サーバーが起動しているか確認してください。",
-    permissionDenied: "このサーバーアドレスへのアクセスを WebPilot に許可してから再試行してください。",
+    permissionDenied: "このサーバーアドレスへのアクセスを Webpilot に許可してから再試行してください。",
   },
   settings: {
     title: "設定",
@@ -788,7 +788,7 @@ const ja: TranslationShape<typeof en> = {
     saving: "接続を確認中…",
     saved: "サーバー設定を保存しました。",
     invalidEndpoint: "有効な HTTP または HTTPS アドレスとポートを入力してください。",
-    permissionDenied: "このサーバーアドレスへのアクセスを WebPilot に許可してください。",
+    permissionDenied: "このサーバーアドレスへのアクセスを Webpilot に許可してください。",
     connectionFailed: "サーバーに接続できません。アドレスを確認して再試行してください。",
   },
   form: {
@@ -874,7 +874,7 @@ const ja: TranslationShape<typeof en> = {
     copy: "コピー",
     scrollToBottom: "一番下へスクロール",
     welcomeMessage: "今日はどのようなお手伝いができますか？",
-    composerPlaceholder: "WebPilot に質問",
+    composerPlaceholder: "Webpilot に質問",
     composerAria: "メッセージ入力",
     skillsLabel: "スキル",
     skillsLoading: "スキルを読み込み中…",
@@ -950,7 +950,7 @@ const ja: TranslationShape<typeof en> = {
 
 const ko: TranslationShape<typeof en> = {
   app: {
-    title: "WebPilot",
+    title: "Webpilot",
     themeLabel: "모양",
     themeLight: "라이트",
     themeDark: "다크",
@@ -1179,7 +1179,7 @@ const ko: TranslationShape<typeof en> = {
 
 const fr: TranslationShape<typeof en> = {
   app: {
-    title: "WebPilot",
+    title: "Webpilot",
     themeLabel: "Apparence",
     themeLight: "Clair",
     themeDark: "Sombre",
@@ -1237,7 +1237,7 @@ const fr: TranslationShape<typeof en> = {
     verifying: "Vérification…",
     invalid: "Mot de passe incorrect. Réessayez.",
     unavailable: "Impossible de vérifier le mot de passe. Vérifiez que le serveur OpenCode est démarré.",
-    permissionDenied: "Autorisez WebPilot à accéder à cette adresse de serveur, puis réessayez.",
+    permissionDenied: "Autorisez Webpilot à accéder à cette adresse de serveur, puis réessayez.",
   },
   settings: {
     title: "Paramètres",
@@ -1246,7 +1246,7 @@ const fr: TranslationShape<typeof en> = {
     saving: "Vérification de la connexion…",
     saved: "Paramètres du serveur enregistrés.",
     invalidEndpoint: "Saisissez une adresse HTTP ou HTTPS et un port valides.",
-    permissionDenied: "Autorisez WebPilot à accéder à cette adresse de serveur.",
+    permissionDenied: "Autorisez Webpilot à accéder à cette adresse de serveur.",
     connectionFailed: "Impossible de se connecter au serveur. Vérifiez l’adresse et réessayez.",
   },
   form: {
@@ -1332,7 +1332,7 @@ const fr: TranslationShape<typeof en> = {
     copy: "Copier",
     scrollToBottom: "Faire défiler jusqu’en bas",
     welcomeMessage: "Comment puis-je vous aider aujourd’hui ?",
-    composerPlaceholder: "Demander à WebPilot",
+    composerPlaceholder: "Demander à Webpilot",
     composerAria: "Saisie du message",
     skillsLabel: "Compétences",
     skillsLoading: "Chargement des compétences…",
@@ -1408,7 +1408,7 @@ const fr: TranslationShape<typeof en> = {
 
 const es: TranslationShape<typeof en> = {
   app: {
-    title: "WebPilot",
+    title: "Webpilot",
     themeLabel: "Apariencia",
     themeLight: "Claro",
     themeDark: "Oscuro",
@@ -1466,7 +1466,7 @@ const es: TranslationShape<typeof en> = {
     verifying: "Verificando…",
     invalid: "La contraseña no es correcta. Inténtalo de nuevo.",
     unavailable: "No se pudo verificar la contraseña. Comprueba que el servidor de OpenCode esté en ejecución.",
-    permissionDenied: "Permite que WebPilot acceda a esta dirección del servidor y vuelve a intentarlo.",
+    permissionDenied: "Permite que Webpilot acceda a esta dirección del servidor y vuelve a intentarlo.",
   },
   settings: {
     title: "Ajustes",
@@ -1475,7 +1475,7 @@ const es: TranslationShape<typeof en> = {
     saving: "Comprobando la conexión…",
     saved: "Ajustes del servidor guardados.",
     invalidEndpoint: "Introduce una dirección HTTP o HTTPS y un puerto válidos.",
-    permissionDenied: "Permite que WebPilot acceda a esta dirección del servidor.",
+    permissionDenied: "Permite que Webpilot acceda a esta dirección del servidor.",
     connectionFailed: "No se pudo conectar con el servidor. Comprueba la dirección e inténtalo de nuevo.",
   },
   form: {
@@ -1561,7 +1561,7 @@ const es: TranslationShape<typeof en> = {
     copy: "Copiar",
     scrollToBottom: "Desplazarse al final",
     welcomeMessage: "¿En qué puedo ayudarte hoy?",
-    composerPlaceholder: "Preguntar a WebPilot",
+    composerPlaceholder: "Preguntar a Webpilot",
     composerAria: "Entrada de mensaje",
     skillsLabel: "Habilidades",
     skillsLoading: "Cargando habilidades…",

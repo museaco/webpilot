@@ -1,9 +1,9 @@
 {
   "name": "webpilot",
-  "displayName": "WebPilot",
-  "version": "1.0.0",
-  "description": "WebPilot browser side panel for your local OpenCode server.",
-  "author": "WebPilot",
+  "displayName": "Webpilot",
+  "version": "1.0.1",
+  "description": "Webpilot browser side panel for your local OpenCode server.",
+  "author": "Webpilot",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",

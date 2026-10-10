@@ -97,7 +97,7 @@ export const useOpenCodeAuthStore = create<OpenCodeAuthState>()(
       setHasHydrated: (hasHydrated) => set({ hasHydrated }),
     }),
     {
-      name: "webpilot.opencode-settings",
+      name: "Webpilot.opencode-settings",
       storage: createJSONStorage(() => extensionStorage),
       onRehydrateStorage: () => (state) => state?.setHasHydrated(true),
       partialize: (state) => ({

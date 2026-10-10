@@ -21,6 +21,7 @@ import { PanelLeftIcon, PlusIcon, SettingsIcon, XIcon } from "lucide-react";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "wouter";
+import logo from "url:~assets/logo.png";
 
 export function HomePage() {
   const { t } = useTranslation();
@@ -63,8 +64,8 @@ export function HomePage() {
       <main className="h-dvh w-full bg-slate-50 text-slate-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
         <div className="mx-auto flex h-full min-h-0 flex-col px-4 py-4">
           <header className="mb-7">
-            <div className="mb-3 flex items-center justify-between">
-              <div className="flex items-center gap-3">
+            <div className="relative mb-3 flex items-center justify-between">
+              <div className="flex items-center">
                 <TooltipHint content={t("navigation.openMenu")} side="bottom">
                   <DrawerTrigger
                     type="button"
@@ -74,13 +75,13 @@ export function HomePage() {
                     <PanelLeftIcon className="h-4 w-4" />
                   </DrawerTrigger>
                 </TooltipHint>
-
-                {/* <div>
-                  <h1 className="mt-0.5 text-lg font-semibold tracking-tight text-slate-950 dark:text-neutral-50">
-                    {t("app.title")}
-                  </h1>
-                </div> */}
+                <img
+                  src={logo}
+                  alt="webpilot logo"
+                  className="  h-8 ml-2 absolute left-1/2 -translate-x-1/2  object-contain"
+                />
               </div>
+
               <div className="flex items-center gap-2">
                 <ThemePicker />
                 <LanguagePicker />
@@ -126,7 +127,13 @@ export function HomePage() {
         }}
       >
         <DrawerHeader className="!flex-row items-center justify-between gap-3 border-b border-border p-4 pb-4 text-left">
-          <DrawerTitle className="text-lg font-semibold"></DrawerTitle>
+          <DrawerTitle className="text-lg font-semibold">
+            <img
+              src={logo}
+              alt="webpilot logo"
+              className=" h-8  object-contain"
+            />
+          </DrawerTitle>
           <DrawerClose
             type="button"
             aria-label={t("navigation.closeMenu")}
