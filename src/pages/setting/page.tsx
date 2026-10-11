@@ -10,6 +10,7 @@ import { ArrowLeftIcon, XIcon } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "wouter";
+import { OpenCodeServeCommand } from "@/components/opencode-serve-command";
 
 export function OpenCodeSettingsPage() {
   const { t } = useTranslation();
@@ -89,7 +90,6 @@ export function OpenCodeSettingsPage() {
         <header className="mb-8 flex items-center gap-3">
           <Button
             aria-label={t("session.backToConversation")}
-            className="bg-accent text-foreground hover:bg-secondary dark:bg-muted dark:hover:bg-muted/80"
             onClick={() => {
               if (!hasAuthenticated || !storedPassword) {
                 setDialogOpen(true);
@@ -113,9 +113,10 @@ export function OpenCodeSettingsPage() {
 
         <section className="rounded-xl border border-border/80 bg-card p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
           <div className="mb-6">
-            <h2 className="mt-1 text-base text-muted-foreground dark:text-neutral-400">
+            <h2 className="mt-1 mb-3 text-base text-muted-foreground dark:text-neutral-400">
               {t("settings.description")}
             </h2>
+            <OpenCodeServeCommand/>
           </div>
 
           <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
@@ -248,7 +249,6 @@ export function OpenCodeSettingsPage() {
 
             <div className="flex justify-end">
               <Button
-                className="border border-border/80 bg-accent text-foreground shadow-sm hover:bg-secondary dark:border-border dark:bg-muted dark:hover:bg-muted/80"
                 disabled={isSaving}
                 type="submit"
               >
@@ -272,7 +272,7 @@ function ClearInputButton({
   return (
     <Button
       aria-label={label}
-      className="absolute top-1/2 right-1 -translate-y-1/2 bg-accent text-foreground hover:bg-secondary dark:bg-muted dark:hover:bg-muted/80"
+      className="absolute top-1/2 right-1 -translate-y-1/2"
       onClick={onClick}
       size="icon-sm"
       type="button"

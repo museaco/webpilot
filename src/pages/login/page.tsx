@@ -1,3 +1,5 @@
+import { OpenCodeServeCommand } from "@/components/opencode-serve-command";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -6,7 +8,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { verifyOpenCodeCredentials } from "@/lib/api/session";
 import {
@@ -14,18 +15,12 @@ import {
   configureOpenCodeEndpoint,
 } from "@/lib/opencode-endpoint";
 import { useOpenCodeAuthStore } from "@/lib/stores/opencode-auth";
-import { CheckIcon, CopyIcon, XIcon } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { XIcon } from "lucide-react";
+import { type FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
-
-const OPEN_CODE_SERVE_COMMAND =
-  "opencode serve --hostname 127.0.0.1 --port 4096";
 
 export function OpenCodePasswordDialog() {
   const { t } = useTranslation();
-  const { isCopied, copyToClipboard } = useCopyToClipboard();
-  const baseUrl = useOpenCodeAuthStore((state) => state.baseUrl);
   const serverAddress = useOpenCodeAuthStore((state) => state.serverAddress);
   const port = useOpenCodeAuthStore((state) => state.port);
   const password = useOpenCodeAuthStore((state) => state.password) ?? "";
@@ -49,14 +44,6 @@ export function OpenCodePasswordDialog() {
   );
   const setPort = useOpenCodeAuthStore((state) => state.setPort);
   const [formError, setFormError] = useState<string | null>(null);
-
-  const handleCopyServeCommand = async () => {
-    try {
-      await copyToClipboard(OPEN_CODE_SERVE_COMMAND);
-    } catch (error) {
-      console.error("Unable to copy the OpenCode server command.", error);
-    }
-  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -99,33 +86,12 @@ export function OpenCodePasswordDialog() {
               {t("authentication.description")}
             </DialogDescription>
           </DialogHeader>
-          <div className="flex flex-col gap-1.5 rounded-md border border-border bg-muted/50 px-3 py-2.5">
-            <p className="text-xs font-medium text-muted-foreground">
-              {t("authentication.serveCommandLabel")}
-            </p>
-            <div className="flex min-w-0 items-start gap-2 rounded-md border border-border/60 bg-background/60 p-2">
-              <pre className="m-0 min-w-0 flex-1 overflow-hidden whitespace-pre-wrap break-all py-1 font-mono text-xs leading-relaxed text-foreground">
-                <code>{OPEN_CODE_SERVE_COMMAND}</code>
-              </pre>
-              <Button
-                aria-label={t("thread.copy")}
-                className="shrink-0"
-                onClick={handleCopyServeCommand}
-                size="icon-sm"
-                title={t("thread.copy")}
-                type="button"
-                variant="ghost"
-              >
-                {isCopied ? (
-                  <CheckIcon aria-hidden="true" />
-                ) : (
-                  <CopyIcon aria-hidden="true" />
-                )}
-              </Button>
-            </div>
-          </div>
+          <OpenCodeServeCommand />
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium" htmlFor="login-server-address">
+            <label
+              className="text-sm font-medium"
+              htmlFor="login-server-address"
+            >
               {t("authentication.serverAddressLabel")}
             </label>
             <div className="relative">
