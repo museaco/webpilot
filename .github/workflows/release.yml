@@ -48,7 +48,7 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package.json').version")
           SHORT_SHA=$(git rev-parse --short HEAD)
-          TAG="v${VERSION}-build.${GITHUB_RUN_NUMBER}"
+          TAG="v${VERSION}"
           ASSET="webpilot-chrome-${TAG}.zip"
 
           cp build/chrome-mv3-prod.zip "$ASSET"

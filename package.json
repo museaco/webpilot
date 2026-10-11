@@ -1,7 +1,7 @@
 {
   "name": "webpilot",
   "displayName": "Webpilot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Webpilot browser side panel for your local OpenCode server.",
   "author": "Webpilot",
   "scripts": {

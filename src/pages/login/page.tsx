@@ -14,12 +14,17 @@ import {
   configureOpenCodeEndpoint,
 } from "@/lib/opencode-endpoint";
 import { useOpenCodeAuthStore } from "@/lib/stores/opencode-auth";
-import { XIcon } from "lucide-react";
+import { CheckIcon, CopyIcon, XIcon } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+
+const OPEN_CODE_SERVE_COMMAND =
+  "opencode serve --hostname 127.0.0.1 --port 4096";
 
 export function OpenCodePasswordDialog() {
   const { t } = useTranslation();
+  const { isCopied, copyToClipboard } = useCopyToClipboard();
   const baseUrl = useOpenCodeAuthStore((state) => state.baseUrl);
   const serverAddress = useOpenCodeAuthStore((state) => state.serverAddress);
   const port = useOpenCodeAuthStore((state) => state.port);
@@ -44,6 +49,14 @@ export function OpenCodePasswordDialog() {
   );
   const setPort = useOpenCodeAuthStore((state) => state.setPort);
   const [formError, setFormError] = useState<string | null>(null);
+
+  const handleCopyServeCommand = async () => {
+    try {
+      await copyToClipboard(OPEN_CODE_SERVE_COMMAND);
+    } catch (error) {
+      console.error("Unable to copy the OpenCode server command.", error);
+    }
+  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -76,7 +89,7 @@ export function OpenCodePasswordDialog() {
   return (
     <Dialog open={dialogOpen} onOpenChange={() => undefined}>
       <DialogContent
-        className="max-h-[calc(100dvh-2rem)] overflow-y-auto"
+        className="max-h-[calc(100dvh-2rem)] overflow-y-auto sm:max-w-[28rem]"
         showCloseButton={false}
       >
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -90,9 +103,26 @@ export function OpenCodePasswordDialog() {
             <p className="text-xs font-medium text-muted-foreground">
               {t("authentication.serveCommandLabel")}
             </p>
-            <code className="break-all font-mono text-xs leading-relaxed text-foreground">
-              opencode serve --hostname 127.0.0.1 --port 4096
-            </code>
+            <div className="flex min-w-0 items-start gap-2 rounded-md border border-border/60 bg-background/60 p-2">
+              <pre className="m-0 min-w-0 flex-1 overflow-hidden whitespace-pre-wrap break-all py-1 font-mono text-xs leading-relaxed text-foreground">
+                <code>{OPEN_CODE_SERVE_COMMAND}</code>
+              </pre>
+              <Button
+                aria-label={t("thread.copy")}
+                className="shrink-0"
+                onClick={handleCopyServeCommand}
+                size="icon-sm"
+                title={t("thread.copy")}
+                type="button"
+                variant="ghost"
+              >
+                {isCopied ? (
+                  <CheckIcon aria-hidden="true" />
+                ) : (
+                  <CopyIcon aria-hidden="true" />
+                )}
+              </Button>
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium" htmlFor="login-server-address">
