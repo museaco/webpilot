@@ -1,5 +1,5 @@
-import TurndownService from "turndown";
 import i18n from "@/lib/i18n";
+import TurndownService from "turndown";
 
 export type ExtractedPage = {
   title: string;
@@ -35,7 +35,7 @@ turndownService.remove([
 ]);
 
 export function pageHtmlToMarkdown(html: string) {
-  const markdown = turndownService.turndown(html).trim().slice(0, 30000);
+  const markdown = turndownService.turndown(html).trim();
   if (!markdown) throw new Error(i18n.t("website.emptyContent"));
   return markdown;
 }
@@ -59,10 +59,7 @@ export async function extractActivePage(): Promise<ExtractedPage> {
       title: document.title,
       url: location.href,
       html: (() => {
-        const content =
-          document.querySelector("article") ??
-          document.querySelector("main") ??
-          document.body;
+        const content = document.body;
         const clone = content?.cloneNode(true) as Element | undefined;
         if (!clone) return "";
         clone
@@ -70,7 +67,7 @@ export async function extractActivePage(): Promise<ExtractedPage> {
             "script,style,noscript,iframe,svg,button,form,input,textarea,select,[hidden],[aria-hidden='true']",
           )
           .forEach((element) => element.remove());
-        return clone.innerHTML.slice(0, 100000);
+        return clone.innerHTML;
       })(),
     }),
   });
