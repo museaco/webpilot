@@ -61,16 +61,16 @@ export function HomePage() {
       onOpenChange={setDrawerOpen}
       swipeDirection="left"
     >
-      <main className="h-dvh w-full bg-slate-50 text-slate-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
+      <main className="h-dvh w-full bg-background text-slate-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
         <div className="mx-auto flex h-full min-h-0 flex-col px-4 py-4">
-          <header className="mb-7">
+          <header className="mb-7 rounded-2xl bg-background px-3 py-3">
             <div className="relative mb-3 flex items-center justify-between">
               <div className="flex items-center">
                 <TooltipHint content={t("navigation.openMenu")} side="bottom">
                   <DrawerTrigger
                     type="button"
                     aria-label={t("navigation.openMenu")}
-                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800"
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground shadow-sm transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800"
                   >
                     <PanelLeftIcon className="h-4 w-4" />
                   </DrawerTrigger>
@@ -97,7 +97,7 @@ export function HomePage() {
             </p>
           </header>
 
-          <section className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm shadow-slate-900/[0.03] dark:border-neutral-800 dark:bg-neutral-900">
+          <section className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm shadow-slate-900/[0.03] dark:border-neutral-800 dark:bg-neutral-900">
             <div className="relative min-h-0 flex-1">
               {chats.map((chat) => (
                 <WorkspaceChat
@@ -149,7 +149,7 @@ export function HomePage() {
             onClick={startNewChat}
             className="inline-flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-medium text-foreground transition hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/20 dark:hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-muted">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-accent text-accent-foreground dark:bg-muted dark:text-muted-foreground">
               <PlusIcon className="h-4 w-4" />
             </span>
             {t("navigation.newSession")}

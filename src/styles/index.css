@@ -6,24 +6,24 @@
   :root,
   :host {
     color-scheme: light;
-    --background: 0 0% 100%;
+    --background: 43.2 75.76% 93.53%;
     --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
+    --card: 46.15 100% 97.45%;
     --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
+    --popover: 46.15 100% 97.45%;
     --popover-foreground: 222 47% 11%;
     --primary: 164.13 100% 30.392%;
     --primary-foreground: 0 0% 7%;
-    --secondary: 210 40% 96%;
+    --secondary: 40 81.82% 95.69%;
     --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
+    --muted: 40 81.82% 95.69%;
     --muted-foreground: 215 16% 47%;
-    --accent: 152 76% 95%;
+    --accent: 44.57 63.64% 89.22%;
     --accent-foreground: 164.13 100% 30.392%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
+    --border: 42 41.67% 85.88%;
+    --input: 42 41.67% 85.88%;
     --ring: 164.13 100% 30.392%;
     --radius: 0.75rem;
     --radius-md: 0.75rem;

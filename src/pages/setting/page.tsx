@@ -84,11 +84,12 @@ export function OpenCodeSettingsPage() {
   };
 
   return (
-    <main className="h-dvh w-full overflow-y-auto bg-slate-50 text-slate-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
+    <main className="h-dvh w-full overflow-y-auto bg-background text-foreground antialiased dark:bg-neutral-950 dark:text-neutral-100">
       <div className="mx-auto flex min-h-full w-full flex-col px-4 py-4">
         <header className="mb-8 flex items-center gap-3">
           <Button
             aria-label={t("session.backToConversation")}
+            className="bg-accent text-foreground hover:bg-secondary dark:bg-muted dark:hover:bg-muted/80"
             onClick={() => {
               if (!hasAuthenticated || !storedPassword) {
                 setDialogOpen(true);
@@ -104,15 +105,15 @@ export function OpenCodeSettingsPage() {
             <ArrowLeftIcon />
           </Button>
           <div>
-            <h1 className="text-lg font-semibold text-slate-950 dark:text-neutral-50">
+            <h1 className="text-lg font-semibold text-foreground dark:text-neutral-50">
               {t("settings.title")}
             </h1>
           </div>
         </header>
 
-        <section className="rounded-xl border border-slate-200/80 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <section className="rounded-xl border border-border/80 bg-card p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
           <div className="mb-6">
-            <h2 className="mt-1 text-base text-slate-500 dark:text-neutral-400">
+            <h2 className="mt-1 text-base text-muted-foreground dark:text-neutral-400">
               {t("settings.description")}
             </h2>
           </div>
@@ -246,7 +247,11 @@ export function OpenCodeSettingsPage() {
             ) : null}
 
             <div className="flex justify-end">
-              <Button disabled={isSaving} type="submit">
+              <Button
+                className="border border-border/80 bg-accent text-foreground shadow-sm hover:bg-secondary dark:border-border dark:bg-muted dark:hover:bg-muted/80"
+                disabled={isSaving}
+                type="submit"
+              >
                 {isSaving ? t("settings.saving") : t("settings.save")}
               </Button>
             </div>
@@ -267,7 +272,7 @@ function ClearInputButton({
   return (
     <Button
       aria-label={label}
-      className="absolute top-1/2 right-1 -translate-y-1/2"
+      className="absolute top-1/2 right-1 -translate-y-1/2 bg-accent text-foreground hover:bg-secondary dark:bg-muted dark:hover:bg-muted/80"
       onClick={onClick}
       size="icon-sm"
       type="button"

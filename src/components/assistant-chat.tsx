@@ -907,7 +907,7 @@ function ReadyAssistantChat({
                       style={{ opacity: 0 }}
                       className="flex h-14 min-w-0 max-w-56 shrink-0 items-center gap-2 rounded-lg border border-border bg-background px-2.5 shadow-sm"
                     >
-                      <div className="relative grid size-8 shrink-0 place-items-center overflow-hidden rounded-md bg-muted text-muted-foreground">
+                      <div className="relative grid size-8 shrink-0 place-items-center overflow-hidden rounded-md bg-accent text-accent-foreground">
                         <GlobeIcon className="size-4" />
                         {site.icon ? (
                           <img

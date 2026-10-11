@@ -204,7 +204,7 @@ export function SessionList({
           </p>
         </div>
       ) : (
-        <ul className="divide-y divide-slate-100 overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm shadow-slate-900/[0.03] dark:divide-neutral-800 dark:border-neutral-800 dark:bg-neutral-900">
+        <ul className="divide-y divide-border/70 overflow-hidden rounded-2xl border border-border/80 bg-secondary shadow-sm shadow-slate-900/[0.03] dark:divide-neutral-800 dark:border-neutral-800 dark:bg-neutral-900">
           {sessions.map((session) => {
             const title = getSessionTitle(session);
             return (
@@ -222,7 +222,7 @@ export function SessionList({
                   onClick={() => onSelect(session)}
                   type="button"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-500 transition group-hover:bg-accent group-hover:text-accent-foreground dark:bg-neutral-800 dark:text-neutral-300 dark:group-hover:bg-accent/20 dark:group-hover:text-neutral-300">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent text-slate-500 transition group-hover:bg-accent group-hover:text-accent-foreground dark:bg-neutral-800 dark:text-neutral-300 dark:group-hover:bg-accent/20 dark:group-hover:text-neutral-300">
                     <svg
                       aria-hidden="true"
                       className="h-[18px] w-[18px]"

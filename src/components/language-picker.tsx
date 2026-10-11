@@ -23,7 +23,7 @@ export function LanguagePicker() {
         <DropdownMenuTrigger
           type="button"
           aria-label={t("language.label")}
-          className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-accent/20"
+          className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border bg-accent text-slate-600 shadow-sm transition hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-accent/20"
         >
           <LanguagesIcon className="h-4 w-4" />
         </DropdownMenuTrigger>

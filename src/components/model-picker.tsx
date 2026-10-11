@@ -209,7 +209,7 @@ export function ModelPicker({
               "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-wait disabled:opacity-70",
               websiteEnabled
                 ? "border-primary/30 bg-primary/10 text-primary hover:bg-primary/15 dark:border-primary/40 dark:bg-primary/15 dark:text-primary dark:hover:bg-accent/20 dark:hover:text-primary"
-                : "border-border/70 bg-background/80 text-muted-foreground hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/20 dark:hover:text-muted-foreground",
+                : "border-border/70 bg-accent text-muted-foreground hover:bg-secondary hover:text-accent-foreground dark:bg-background dark:hover:bg-accent/20 dark:hover:text-muted-foreground",
             )}
           >
             {websiteLoading ? (
@@ -235,7 +235,7 @@ export function ModelPicker({
         <DropdownMenuTrigger
           type="button"
           aria-label={t("model.pickerAria")}
-          className="inline-flex max-w-full items-center gap-2 self-start rounded-full border border-border/70 bg-background/80 px-3 py-1.5 text-xs text-muted-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/20 dark:hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="inline-flex max-w-full items-center gap-2 self-start rounded-full border border-border/70 bg-accent px-3 py-1.5 text-xs text-muted-foreground shadow-sm transition-colors hover:bg-secondary hover:text-accent-foreground dark:bg-background dark:hover:bg-accent/20 dark:hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <SparklesIcon className="size-3.5 shrink-0" />
           <span className="max-w-40 truncate font-medium text-foreground">
