@@ -697,10 +697,10 @@ const Composer: FC<{
                 onMouseEnter={() => setSelectedSkillIndex(index)}
                 onClick={() => chooseSkill(skill)}
                 className={cn(
-                  "flex w-full items-start gap-2 rounded-sm px-2.5 py-2 text-left text-sm outline-none",
+                  "flex w-full items-start gap-2 rounded-sm px-2.5 py-2 text-left text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/20 dark:hover:text-popover-foreground",
                   index === selectedSkillIndex
-                    ? "bg-accent text-accent-foreground"
-                    : "hover:bg-accent/60 hover:text-accent-foreground dark:hover:bg-accent/20 dark:hover:text-foreground",
+                    ? "bg-muted text-foreground"
+                    : undefined,
                 )}
               >
                 <SparklesIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
